@@ -1,7 +1,44 @@
 {
-    "market_data": {},
-    "ai_apis": {},
-    "finance_data": {},
-    "other_integrations": {}
-  }
-  
+  "market_data": {
+    "alpha_vantage": {
+      "api_key": "${ALPHA_VANTAGE_API_KEY}",
+      "base_url": "https://www.alphavantage.co/query",
+      "rate_limit": {
+        "limit": 500,
+        "interval": "minute",  
+        "last_hit_time": null
+      }
+    },
+    "finnhub": {
+      "api_key": "***REDACTED***",
+      "base_url": "https://finnhub.io/api/v1",
+      "rate_limit": {
+        "limit": 60,
+        "interval": "minute",
+        "last_hit_time": null
+      }
+    },
+    "polygon": {
+      "api_key": "***REDACTED***",
+      "base_url": "https://api.polygon.io/v2",
+      "rate_limit": {
+        "limit": 1000,
+        "interval": "minute",
+        "last_hit_time": null
+      }
+    },
+    "angel_one": {
+      "api_key": "***REDACTED***",
+      "tpin": "***REDACTED***",
+      "base_url": "https://apiconnect.angelbroking.com/rest/secure/angelbroking",
+      "rate_limit": {
+        "limit": 500,
+        "interval": "minute",
+        "last_hit_time": null
+      }
+    }
+  },
+  "ai_apis": {},
+  "finance_data": {},
+  "other_integrations": {}
+}
