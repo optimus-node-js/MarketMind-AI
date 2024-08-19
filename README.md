@@ -12,7 +12,6 @@ MarketMind AI is a cutting-edge, AI-powered platform designed to analyze global 
 - [AI/ML Models](#aiml-models)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - **Global and Local Market Analysis:** Analyze financial markets with real-time data, including the Indian market, influenced by global trends.
@@ -137,17 +136,3 @@ market-mind-ai/
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss what you would like to change.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-### **Next Steps:**
-1. **Create the GitHub Repository:**
-   - Create the repository with the suggested name (`market-mind-ai` or another name you prefer).
-   - Add the `README.md` to the repository.
-
-2. **Initialize the Project:**
-   - Follow the instructions in the `README.md` to set up the project structure, backend, and frontend.
-   - Start building the core features, beginning with the backend API setup and frontend dashboard.
-
-Let me know once you’ve created the repository, and we can continue with the next steps!
