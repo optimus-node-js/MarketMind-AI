@@ -5,8 +5,10 @@
       "base_url": "https://www.alphavantage.co/query",
       "rate_limit": {
         "limit": 500,
-        "interval": "minute",  
-        "last_hit_time": null
+        "interval": "minute",
+        "last_hit_time": null,
+        "requests_made": 0,
+        "reset_time": 60000  
       }
     },
     "finnhub": {
@@ -15,7 +17,9 @@
       "rate_limit": {
         "limit": 60,
         "interval": "minute",
-        "last_hit_time": null
+        "last_hit_time": null,
+        "requests_made": 0,
+        "reset_time": 60000 
       }
     },
     "polygon": {
@@ -24,7 +28,9 @@
       "rate_limit": {
         "limit": 1000,
         "interval": "minute",
-        "last_hit_time": null
+        "last_hit_time": null,
+        "requests_made": 0,
+        "reset_time": 60000  
       }
     },
     "angel_one": {
@@ -34,7 +40,9 @@
       "rate_limit": {
         "limit": 500,
         "interval": "minute",
-        "last_hit_time": null
+        "last_hit_time": null,
+        "requests_made": 0,
+        "reset_time": 60000  
       }
     }
   },
