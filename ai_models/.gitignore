@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.Python
+.venv/
+venv/
+ENV/
+env.bak/
+*.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files
+*.csv
+*.h5
+*.hdf5
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Environment variables
+.env
