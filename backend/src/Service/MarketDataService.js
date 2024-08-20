@@ -79,6 +79,53 @@ const fetchMarketData = async (symbol) => {
   }
 };
 
+
+
+const authenticate = async () => {
+    const url = 'https://apiconnect.angelbroking.com/rest/auth/angelbroking/user/v1/loginByPassword';
+    const payload = {
+      clientcode: '***REDACTED***',
+      password: '***REDACTED***',
+      totp: '***REDACTED***'
+    };
+  
+    try {
+      const response = await axios.post(url, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+      return response.data.data.jwtToken; // return the JWT token
+    } catch (error) {
+      console.error('Error authenticating:', error);
+      throw error;
+    }
+  };
+  
+  const callAngelOneApi = async (endpoint, symbol, payload) => {
+    const jwtToken = await authenticate(); // Get the JWT token
+  
+    const api = config.market_data.angel_one;
+    const url = `${api.base_url}${api.endpoints[endpoint].url}`;
+  
+    try {
+      const response = await axios.post(url, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${jwtToken}` // Use the token here
+        }
+      });
+      await logApiHit(api.base_url + api.endpoints[endpoint].url, symbol, response.status);
+      return response.data;
+    } catch (error) {
+      await logApiHit(api.base_url + api.endpoints[endpoint].url, symbol, 500);
+      console.error('Error calling Angel One API:', error);
+      throw error;
+    }
+  };
+
 module.exports = {
-  fetchMarketData
+  fetchMarketData,
+  callAngelOneApi
 };

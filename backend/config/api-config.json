@@ -37,12 +37,67 @@
       "api_key": "***REDACTED***",
       "tpin": "***REDACTED***",
       "base_url": "https://apiconnect.angelbroking.com/rest/secure/angelbroking",
-      "rate_limit": {
-        "limit": 500,
-        "interval": "minute",
-        "last_hit_time": null,
-        "requests_made": 0,
-        "reset_time": 60000  
+      "endpoints": {
+        "placeOrder": {
+          "url": "/order/v1/placeOrder",
+          "rate_limit": {
+            "limit": 500,
+            "interval": "minute",
+            "last_hit_time": null,
+            "requests_made": 0,
+            "reset_time": 60000
+          }
+        },
+        "modifyOrder": {
+          "url": "/order/v1/modifyOrder",
+          "rate_limit": {
+            "limit": 500,
+            "interval": "minute",
+            "last_hit_time": null,
+            "requests_made": 0,
+            "reset_time": 60000
+          }
+        },
+        "cancelOrder": {
+          "url": "/order/v1/cancelOrder",
+          "rate_limit": {
+            "limit": 500,
+            "interval": "minute",
+            "last_hit_time": null,
+            "requests_made": 0,
+            "reset_time": 60000
+          }
+        },
+        "getLtpData": {
+          "url": "/order/v1/getLtpData",
+          "rate_limit": {
+            "limit": 500,
+            "interval": "minute",
+            "last_hit_time": null,
+            "requests_made": 0,
+            "reset_time": 60000
+          }
+        },
+        "getQuote": {
+          "url": "/market/v1/quote",
+          "rate_limit": {
+            "limit": 500,
+            "interval": "minute",
+            "last_hit_time": null,
+            "requests_made": 0,
+            "reset_time": 60000
+          }
+        },
+        "getCandleData": {
+          "url": "/historical/v1/getCandleData",
+          "rate_limit": {
+            "limit": 180,
+            "interval": "minute",
+            "last_hit_time": null,
+            "requests_made": 0,
+            "reset_time": 60000
+          }
+        }
       }
     }
   },
