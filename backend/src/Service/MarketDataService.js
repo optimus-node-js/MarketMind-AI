@@ -59,21 +59,65 @@ const logApiHit = async (apiName, symbol, status) => {
   }
 };
 
-const fetchMarketData = async (symbol) => {
-  const api = await getAvailableApi(symbol);
+// Function to fetch data from Alpha Vantage
+const fetchAlphaVantageData = async (symbol) => {
+  const apiKey = config.market_data.alpha_vantage.api_key;
+  const url = `${config.market_data.alpha_vantage.base_url}?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=1min&apikey=${apiKey}`;
+
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching Alpha Vantage data:', error);
+    throw error;
+  }
+};
+
+// Function to fetch data from Finnhub
+const fetchFinnhubData = async (symbol) => {
+  const apiKey = config.market_data.finnhub.api_key;
+  const url = `${config.market_data.finnhub.base_url}/quote?symbol=${symbol}&token=${apiKey}`;
+
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching Finnhub data:', error);
+    throw error;
+  }
+};
+
+// Function to fetch data from Polygon.io
+const fetchPolygonData = async (symbol) => {
+  const apiKey = config.market_data.polygon.api_key;
+  const url = `${config.market_data.polygon.base_url}/aggs/ticker/${symbol}/prev?apiKey=${apiKey}`;
+
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching Polygon data:', error);
+    throw error;
+  }
+};
+
+// Main function to fetch data from all APIs
+const fetchMarketData = async (symbol, requestType = 'defaultType') => {
+  const api = await getAvailableApi(symbol, requestType);
 
   if (!api) {
     throw new Error('Rate limit exceeded on all available APIs.');
   }
 
-  const url = `${api.base_url}?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${api.api_key}`;
+  const endpoint = api.endpoints[requestType] || api.endpoints['defaultType']; // Fallback to default if undefined
 
   try {
+    const url = `${api.base_url}${endpoint.url}?symbol=${symbol}&apikey=${api.api_key}`;
     const response = await axios.get(url);
     await logApiHit(api.base_url, symbol, response.status);
     return response.data;
   } catch (error) {
-    await logApiHit(api.base_url, symbol, 500); // Log with error status
+    await logApiHit(api.base_url, symbol, 500);
     console.error('Error fetching market data:', error);
     throw error;
   }
@@ -81,51 +125,12 @@ const fetchMarketData = async (symbol) => {
 
 
 
-const authenticate = async () => {
-    const url = 'https://apiconnect.angelbroking.com/rest/auth/angelbroking/user/v1/loginByPassword';
-    const payload = {
-      clientcode: '***REDACTED***',
-      password: '***REDACTED***',
-      totp: '***REDACTED***'
-    };
-  
-    try {
-      const response = await axios.post(url, payload, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
-      return response.data.data.jwtToken; // return the JWT token
-    } catch (error) {
-      console.error('Error authenticating:', error);
-      throw error;
-    }
-  };
-  
-  const callAngelOneApi = async (endpoint, symbol, payload) => {
-    const jwtToken = await authenticate(); // Get the JWT token
-  
-    const api = config.market_data.angel_one;
-    const url = `${api.base_url}${api.endpoints[endpoint].url}`;
-  
-    try {
-      const response = await axios.post(url, payload, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${jwtToken}` // Use the token here
-        }
-      });
-      await logApiHit(api.base_url + api.endpoints[endpoint].url, symbol, response.status);
-      return response.data;
-    } catch (error) {
-      await logApiHit(api.base_url + api.endpoints[endpoint].url, symbol, 500);
-      console.error('Error calling Angel One API:', error);
-      throw error;
-    }
-  };
 
 module.exports = {
   fetchMarketData,
-  callAngelOneApi
+  fetchAlphaVantageData,
+  fetchFinnhubData,
+  fetchPolygonData,
+  checkRateLimit,
+  getAvailableApi,
 };

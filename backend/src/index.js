@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const marketDataRouter = require('./Router/MarketDataRouter');
-const angelOneRouter = require('./Router/AngelOneRouter');
 
 dotenv.config();
 
@@ -20,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   .catch(err => console.error('MongoDB connection error:', err));
 
 app.use('/api', marketDataRouter);
-app.use('/api/angelone', angelOneRouter);
+
 
 const PORT = process.env.PORT || 5000;
 
