@@ -1,0 +1,1 @@
+# Stores all configurations such as API keys, secret keys, base URLs, and any other global settings.
