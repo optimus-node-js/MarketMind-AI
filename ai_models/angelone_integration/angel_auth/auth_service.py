@@ -1,11 +1,9 @@
 # Handles authentication, TOTP generation, session management, and refreshing sessions.
 # This file will handle the authentication process, including generating TOTP and managing login sessions.
 
-
 import pyotp
 from SmartApi.smartConnect import SmartConnect
 from .session_manager import SessionManager
-
 
 class AuthService:
     def __init__(self):
@@ -34,7 +32,7 @@ class AuthService:
             self.session_manager.save_feed_token(feed_token)
 
             print("Login successful!")
-            return data['data']['jwtToken'], feed_token
+            return self.obj, feed_token
         except Exception as e:
             print(f"Error during login: {e}")
             return None, None
@@ -50,7 +48,7 @@ class AuthService:
             data = self.obj.refreshAccessToken(refresh_token)
             self.session_manager.save_session(data['data']['jwtToken'], refresh_token)
             print("Session refreshed!")
-            return data['data']['jwtToken']
+            return self.obj  # Returning the SmartConnect object after refreshing
         except Exception as e:
             print(f"Error during session refresh: {e}")
             return None

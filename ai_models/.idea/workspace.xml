@@ -5,18 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33620f61-b1cb-4433-a284-c80273487d3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/angelone_integration/auth/auth_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/auth/session_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/config/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/funds/fund_transfer_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/market_data/historical_data_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/market_data/market_data_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/order_management/order_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/order_management/trade_book_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/portfolio_management/portfolio_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/utils/logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/angelone_integration/utils/rate_limiter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/angel_auth/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/funds/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/market_data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/order_management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/portfolio_management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angelone_integration/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angelone_integration/auth/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/angelone_integration/angel_auth/auth_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angelone_integration/auth/session_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/angelone_integration/angel_auth/session_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angelone_integration/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/angelone_integration/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angelone_integration/market_data/market_data_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/angelone_integration/market_data/market_data_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angelone_integration/session.txt" beforeDir="false" afterPath="$PROJECT_DIR$/angelone_integration/session.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +35,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2lK1GqYzKjLFs8ttI3uJUxoCdlV" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -44,17 +46,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.DriverLTP.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.market_data_service.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="DriverLTP" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai_models" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../AlgoDividend" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../AlgoDividend/DriverLTP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai_models" />
       <option name="ENV_FILES" value="" />
@@ -77,9 +103,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="market_data_service" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai_models" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/angelone_integration/market_data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/angelone_integration/market_data/market_data_service.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.DriverLTP" />
+        <item itemvalue="Python.market_data_service" />
       </list>
     </recent_temporary>
   </component>
