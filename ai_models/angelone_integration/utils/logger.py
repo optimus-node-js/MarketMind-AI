@@ -1,1 +1,12 @@
-# Handles detailed logging and error handling for debugging purposes.
+import logging
+
+def setup_logger():
+    logging.basicConfig(
+        filename='logs/app.log',
+        level=logging.INFO,
+        format='%(asctime)s %(levelname)s %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    return logging.getLogger()
+
+logger = setup_logger()

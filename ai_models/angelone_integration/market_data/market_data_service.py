@@ -1,34 +1,45 @@
-# Contains methods to fetch market data such as LTP, OHLC, quotes, and market depth.
+from fastapi import HTTPException
+from angel_auth.auth_service import login
 
+# Fetch LTP for a single symbol
+def fetch_ltp(symbol: str, token: str):
+    obj, refreshToken, feedToken = login()
+    try:
+        LTP = obj.ltpData('NSE', symbol, token)
+        if LTP and 'data' in LTP and 'ltp' in LTP['data']:
+            return {"symbol": symbol, "ltp": LTP['data']['ltp']}
+        else:
+            raise HTTPException(status_code=404, detail=f"No LTP data found for {symbol}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get LTP data for {symbol}: {e}")
 
+# Fetch OHLC for a single symbol within a specific date range
+def fetch_ohlc(symbol: str, token: str, interval: str, from_date: str, to_date: str):
+    obj, refreshToken, feedToken = login()
+    try:
+        historical_params = {
+            "exchange": "NSE",
+            "symboltoken": token,
+            "interval": interval,
+            "fromdate": from_date,
+            "todate": to_date
+        }
 
-
-from SmartApi.smartConnect import SmartConnect
-from angel_auth.auth_service import AuthService
-
-class MarketDataService:
-    def __init__(self):
-        self.auth_service = AuthService()
-        self.obj, self.feed_token = self.auth_service.login()
-
-    def get_ltp(self, symbol, token):
-        # Ensure that we are using a valid session
-        if not self.obj:
-            self.obj, self.feed_token = self.auth_service.login()
-
-        try:
-            LTP = self.obj.ltpData('NSE', symbol, token)
-            if LTP and 'data' in LTP and 'ltp' in LTP['data']:
-                return LTP['data']['ltp']
-            else:
-                return f"No LTP data found for {symbol}"
-        except Exception as e:
-            return f"Error fetching LTP data for {symbol}: {e}"
-
-    def get_ohlc(self, symbol, token):
-        # You can implement OHLC fetching here similar to the LTP method
-        pass
-
-    def get_market_depth(self, symbol, token):
-        # You can implement market depth fetching here similar to the LTP method
-        pass
+        data = obj.getCandleData(historical_params)
+        if data and 'data' in data:
+            ohlc_data = data['data']
+            ohlc_list = [
+                {
+                    "date": ohlc[0],
+                    "open": ohlc[1],
+                    "high": ohlc[2],
+                    "low": ohlc[3],
+                    "close": ohlc[4]
+                }
+                for ohlc in ohlc_data
+            ]
+            return {"symbol": symbol, "ohlc": ohlc_list}
+        else:
+            raise HTTPException(status_code=404, detail=f"No OHLC data found for {symbol}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get OHLC data for {symbol}: {e}")

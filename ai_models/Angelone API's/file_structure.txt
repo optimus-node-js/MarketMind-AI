@@ -1,0 +1,85 @@
+MarketMind-AI/
+├── **ai_models/**                     # All AI-related models, predictions, and strategies
+│   ├── **DataPreprocessing/**          # Data preprocessing for AI models
+│   │   ├── clean_data.py               # Cleans raw stock data (e.g., handling missing values)
+│   │   ├── feature_engineering.py      # Adds new features from raw data (e.g., moving averages)
+│   │   └── timeseries_preparation.py   # Prepares time-series data for training
+│   ├── **SentimentAnalysis/**          # Contains sentiment analysis models and pipelines
+│   │   ├── sentiment_model.py          # Sentiment analysis using NLP models like BERT
+│   │   ├── news_data_pipeline.py       # Pipeline to fetch and process news data
+│   │   └── analyze_news.py             # Analyze news headlines for stock sentiment
+│   ├── **StockPredictionModels/**      # Stock prediction models (time series, RL)
+│   │   ├── lstm_model.py               # LSTM model for time-series prediction
+│   │   ├── reinforcement_learning.py   # Reinforcement Learning models for strategy improvement
+│   │   └── backtesting.py              # Backtesting framework for evaluating predictions
+│   ├── **TechnicalIndicators/**        # Technical analysis tools and indicator calculators
+│   │   ├── rsi.py                      # Relative Strength Index calculation
+│   │   ├── moving_average.py           # Moving Average calculation
+│   │   ├── bollinger_bands.py          # Bollinger Bands calculation
+│   │   └── macd.py                     # Moving Average Convergence Divergence calculator
+│   ├── **Utils/**                      # Helper functions used by the AI models
+│   │   ├── model_utils.py              # Utility functions for AI model training and evaluation
+│   │   └── data_loaders.py             # Functions to load and process data
+│   └── __init__.py
+│
+├── **api_services/**                   # API microservices for fetching data
+│   ├── **AngelOneService/**            # AngelOne API service for fetching stock data
+│   │   ├── fetch_ohlc.py               # Fetch OHLC (open, high, low, close) data
+│   │   ├── fetch_volumes.py            # Fetch volume data for stocks
+│   │   ├── websockets_handler.py       # Handles real-time WebSocket connections
+│   │   └── auth_service.py             # Handles authentication for AngelOne API
+│   ├── **AlphaVantageService/**        # Alpha Vantage API service for stock data
+│   │   ├── fetch_global_indices.py     # Fetch global market indices (S&P 500, etc.)
+│   │   └── fetch_crypto.py             # Fetch cryptocurrency data
+│   ├── **NewsAPIService/**             # News API service for fetching financial news
+│   │   ├── fetch_headlines.py          # Fetches the latest financial news headlines
+│   │   ├── analyze_news_sentiment.py   # Sentiment analysis of news using pre-trained models
+│   │   └── cron_jobs.py                # Cron jobs to fetch news at regular intervals
+│   ├── **YahooFinanceService/**        # Yahoo Finance API service
+│   │   ├── fetch_fundamentals.py       # Fetch fundamental data (P/E ratio, EPS, etc.)
+│   │   └── fetch_earnings.py           # Fetch earnings reports for stocks
+│   ├── **EconomicIndicatorsService/**  # Economic indicators (GDP, CPI, inflation)
+│   │   ├── fetch_gdp.py                # Fetch GDP data
+│   │   ├── fetch_inflation.py          # Fetch inflation data
+│   │   └── fetch_interest_rates.py     # Fetch interest rate data
+│   └── **Utils/**                      # Shared utilities for API services
+│       ├── api_helper.py               # Helper functions for API requests and responses
+│       ├── rate_limiter.py             # Manages API rate limits
+│       └── error_handler.py            # Error handling for API calls
+│
+├── **data/**                           # Data storage for historical, processed, and AI predictions
+│   ├── **raw/**                        # Raw data fetched from APIs
+│   ├── **processed/**                  # Preprocessed data used for AI model training
+│   ├── **sentiment/**                  # Sentiment data derived from news analysis
+│   └── **predictions/**                # Predictions from AI models (used for backtesting)
+│
+├── **api_gateway/**                    # API Gateway to manage incoming requests (REST, WebSocket)
+│   ├── rest_api.py                     # REST API entry point (manages requests to microservices)
+│   ├── websocket_service.py            # WebSocket service for real-time data streaming
+│   └── api_config.yaml                 # Configuration for managing API routing and security
+│
+├── **event_bus/**                      # Event-driven communication between microservices
+│   ├── event_publisher.py              # Publishes events when new data is fetched or processed
+│   ├── event_subscriber.py             # Subscribes to events (e.g., new data, predictions)
+│   └── event_schema.py                 # Schema for defining event types and payloads
+│
+├── **docker/**                         # Docker configuration for containerization
+│   ├── docker-compose.yml              # Docker Compose setup for running all services
+│   ├── Dockerfile_ai_models            # Dockerfile for the AI models service
+│   └── Dockerfile_api_services         # Dockerfile for the API microservices
+│
+├── **kubernetes/**                     # Kubernetes deployment configurations
+│   ├── deployment_ai.yaml              # Deployment config for AI models service
+│   ├── deployment_api.yaml             # Deployment config for API services
+│   ├── service_ai.yaml                 # Service config for AI models
+│   └── service_api.yaml                # Service config for API microservices
+│
+├── **logs/**                           # Centralized logging for debugging and monitoring
+│   ├── ai_logs/                        # Logs for AI model predictions and performance
+│   ├── api_logs/                       # Logs for API request/response cycles
+│   └── system_logs/                    # General system performance logs
+│
+└── **config/**                         # Centralized configuration files
+    ├── api_keys.yaml                   # API keys and credentials for external services
+    ├── environment.yaml                # Environment-specific configuration (dev, prod)
+    └── logging_config.yaml             # Logging level and format configurations
