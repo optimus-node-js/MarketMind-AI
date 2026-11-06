@@ -84,7 +84,7 @@ market-mind-ai/
 ### Backend:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/market-mind-ai.git
+   git clone https://github.com/optimus-node-js/MarketMind-AI.git
    cd market-mind-ai/backend
    ```
 2. Install dependencies:
@@ -136,3 +136,15 @@ market-mind-ai/
 ## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss what you would like to change.
 
+---
+
+## 👤 Author
+
+**Rahul Vishwakarma** — Senior Full Stack Developer · Ahmedabad, India
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-rahul--vishwakarma--portfolio.vercel.app-0A66C2?style=flat-square&logo=vercel&logoColor=white)](https://rahul-vishwakarma-portfolio.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Rahul%20Vishwakarma-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/rahul-vishwakarma-101346192)
+[![Email](https://img.shields.io/badge/Email-karmarahul67%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:karmarahul67@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-optimus--node--js-181717?style=flat-square&logo=github)](https://github.com/optimus-node-js)
+
+If you find this project useful, consider giving it a ⭐.
